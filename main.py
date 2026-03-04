@@ -15,8 +15,7 @@ prompt = ChatPromptTemplate.from_messages([
 
 chain = prompt | llm | StrOutputParser()
 
-response = chain.invoke({"question": "What is RAG?"})
-print(response)
+
 
 for chunk in chain.stream({"question": "What is RAG?"}):
     print(chunk, end="", flush=True)
