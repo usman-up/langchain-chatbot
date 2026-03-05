@@ -65,14 +65,3 @@ def main():
         print(f"AI: {chat(user_input)}")
 
 main()
-
-
-#print(chat("What is Rag?"))
-#print(chat("give me a Python example of it"))
-#print(chat("Now explain the code you just gave"))
-
-
-
-
-#for chunk in chain.stream({"question": "What is RAG?"}):
-#    print(chunk, end="", flush=True)
