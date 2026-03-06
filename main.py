@@ -3,9 +3,18 @@ from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.output_parsers import StrOutputParser
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv() #read .env variables
+
+MODEL_NAME = os.getenv("MODEL_NAME", "glm-5:cloud")
+TEMPERATURE = float(os.getenv("TEMPERATURE", "0.7"))
+MAX_TURNS = int(os.getenv("MAX_TURNS", "10"))
+
 llm = ChatOllama(
-    model ="glm-5:cloud",
-    temprature=0.7
+    model = MODEL_NAME,
+    temprature= TEMPERATURE
 )
 
 prompt = ChatPromptTemplate.from_messages([
@@ -17,12 +26,12 @@ prompt = ChatPromptTemplate.from_messages([
 chain = prompt | llm | StrOutputParser()
 
 chat_history = []   #memory store
-max_turns = 10 #10 messages (Human + AI)
+# max_turns = 10 #10 messages (Human + AI)
 
 def chat(question):
     current_turn = len(chat_history) // 2
 
-    if current_turn >= max_turns:
+    if current_turn >= MAX_TURNS:
         return(
             "Context Windos is full!"
             "The AI may not follow previous thread properly"

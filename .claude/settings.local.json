@@ -5,7 +5,13 @@
       "Bash(python -m pip install:*)",
       "Bash(python:*)",
       "Bash(curl:*)",
-      "Bash(start:*)"
+      "Bash(start:*)",
+      "Bash(git -C /d/AI-Course/lanchain-chatbot log --oneline -10)",
+      "Bash(source:*)",
+      "Bash(.venv/Scripts/python.exe -m pip install:*)",
+      "Bash(uv sync:*)",
+      "Bash(uv run python:*)",
+      "Bash(uv pip install:*)"
     ]
   }
 }
